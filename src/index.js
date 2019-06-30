@@ -9,8 +9,8 @@ app.get('/', function (req, res) {
 
 io.on('connection', socketManager);
 
-http.listen(4000, function () {
-	console.log('listening on *:4000');
+http.listen(process.env.PORT || 4000, function () {
+	console.log('listening on *:4000', process.env.PORT);
 })
 
 setInterval(() => io.emit('time', new Date().toTimeString()), 2000);
