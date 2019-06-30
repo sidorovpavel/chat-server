@@ -16,7 +16,9 @@ var sequelize = new Sequelize(
 	logging: false,
 	port: process.env.DBPORT||3306,
 	define: {
-		timestamp: false
+		timestamp: false,
+		charset: 'utf8',
+		collate: 'utf8_general_ci',
 	}
 });
 
