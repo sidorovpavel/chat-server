@@ -5,16 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "run": "node src/index.js",
-
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Pavel Sidorov",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "gh-pages": "^2.0.1",
     "mysql2": "^1.6.5",
     "sequelize": "^5.8.12",
     "socket.io": "^2.2.0"
