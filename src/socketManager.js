@@ -2,7 +2,6 @@ var Sequelize = require('sequelize');
 var Message = require('./models/messages');
 var io = require('./index').io;
 var {USER_VERIFY, USER_CONNECTED, USER_DISCONNECTED, MESSAGE_SEND, MESSAGE_HISTORY} = require('./events');
-var iconv = require('iconv-lite');
 
 var connectedUsers = [];
 
@@ -58,10 +57,8 @@ module.exports = function (socket) {
 	}
 
 	function saveMessages(user, text, type) {
-		user = iconv.encode(iconv.decode(user, "cp1251"), "utf8").toString();
-		var message = iconv.encode(iconv.decode(text, "cp1251"), "utf8").toString();
-		console.log({user, message});
-		Message.create({ user, message, dt: Date.now()}).then(
+		console.log({user, text});
+		Message.create({ user, message: text, type, dt: Date.now()}).then(
 			(result) => io.emit(MESSAGE_SEND, result)
 		);
 	}

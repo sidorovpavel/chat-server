@@ -9,22 +9,15 @@ var Message = sequelize.define('messages', {
     field: 'id'
   },
   user: {
-    type: Sequelize.CHAR(32),
+    type: Sequelize.CHAR(32)+ ' CHARSET utf8 COLLATE utf8_unicode_ci' ,
     allowNull: true,
     field: 'user'
   },
   message: {
-    type: Sequelize.TEXT,
+    type: Sequelize.TEXT+ ' CHARSET utf8 COLLATE utf8_unicode_ci' ,
     allowNull: true,
     field: 'message'
   },
-  /*
-  type: {
-    type: Sequelize.INTEGER(4),
-    allowNull: true,
-    field: 'type'
-  },
-  */
   dt: {
     type: Sequelize.DATE,
     allowNull: true,
