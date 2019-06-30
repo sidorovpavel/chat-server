@@ -1,8 +1,12 @@
 var Sequelize = require('sequelize');
 
-var sequelize = new Sequelize('chat_sb', 'chat_user', 'chat_user_123', {
+var sequelize = new Sequelize(
+	process.env.DBNAME||'chat_sb',
+	process.env.DBUSER||'chat_user',
+	process.env.DBPASS||'chat_user_123',
+	{
 	dialect: 'mysql',
-	host: 'localhost',
+	host: process.env.DBHOST||'localhost',
 	pool: {
 		max: 5,
 		min: 0,
@@ -10,7 +14,7 @@ var sequelize = new Sequelize('chat_sb', 'chat_user', 'chat_user_123', {
 		idle: 1000,
 	},
 	logging: false,
-	port: 3306,
+	port: process.env.DBPORT||3306,
 	define: {
 		timestamp: false
 	}
