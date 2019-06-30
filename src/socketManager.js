@@ -25,15 +25,14 @@ module.exports = function (socket) {
 	socket.on(USER_CONNECTED, ({user, historyLimit}) => {
 		connectedUsers = addUser(connectedUsers, user);
 		socket.user = user;
-		socket.historyLimit = historyLimit;
 		socket.lastMessageId = Number.MAX_SAFE_INTEGER;
 		io.emit(USER_CONNECTED, {user, connectedUsers});
-		getHistory();
+		getHistory(historyLimit);
 	});
 
 	//Get History
-	socket.on(MESSAGE_HISTORY, () => {
-		getHistory();
+	socket.on(MESSAGE_HISTORY, (historyLimit) => {
+		getHistory(historyLimit);
 	});
 
 	//User disconnects
@@ -63,8 +62,8 @@ module.exports = function (socket) {
 		);
 	}
 
-	function getHistory() {
-		var limit = socket.historyLimit, id = socket.lastMessageId;
+	function getHistory(limit) {
+		var id = socket.lastMessageId;
 		Message.findAll(
 			{
 				where: {
