@@ -57,6 +57,7 @@ module.exports = function (socket) {
 	}
 
 	function saveMessages(user, text, type) {
+		console.log({user, text});
 		Message.create({ user, message: text, type, dt: Date.now()}).then(
 			(result) => io.emit(MESSAGE_SEND, result)
 		);
