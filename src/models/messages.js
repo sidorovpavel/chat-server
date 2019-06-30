@@ -32,7 +32,9 @@ var Message = sequelize.define('messages', {
   }
 }, {
   tableName: 'messages',
-  timestamps: false
+  timestamps: false,
+  charset: 'utf8',
+  collate: 'utf8_unicode_ci'
 });
 
 module.exports = Message;
