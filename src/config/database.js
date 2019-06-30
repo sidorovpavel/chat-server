@@ -24,5 +24,6 @@ var sequelize = new Sequelize(
 		charset: 'utf8',
 	}
 });
+sequelize.query("SET NAMES utf8;");
 
 module.exports = sequelize;
