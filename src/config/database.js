@@ -16,13 +16,12 @@ var sequelize = new Sequelize(
 	logging: false,
 	port: process.env.DBPORT||3306,
 	define: {
-		charset: 'utf8mb4',
+		charset: 'utf8',
 		timestamps: false,
 		dialectOptions: {
-			collate: 'utf8mb4_general_ci'
+			collate: 'utf8_general_ci'
 		}
 	},
 });
-sequelize.query("SET NAMES utf8;");
 
 module.exports = sequelize;
